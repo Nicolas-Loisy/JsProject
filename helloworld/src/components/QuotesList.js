@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 import Button from "@mui/material/Button";
 import { Card, CardContent, Typography } from "@mui/material";
@@ -11,21 +10,6 @@ export default class QuotesList extends React.Component {
     state = {
         "quotes":[]
     };
-    // render(){
-    //     return <div>
-    //         <Button>Valider</Button>
-    //         <Card>
-    //             <CardContent>
-    //                 { quote }
-    //             </CardContent>
-    //         </Card>
-
-    //         <ul>
-    //             {
-    //                 this.state.quotes.map(item => <li>Perso : {item.actor} Citation : {item.content}</li>)
-    //             }
-    //         </ul>
-    //     </div> 
         
     render(){
         return ( 
@@ -35,6 +19,10 @@ export default class QuotesList extends React.Component {
                     this.state.quotes.map((v)=>{
                         return(
                                 <Box mt={3}>
+
+                                    {/* <Quote author={this.state.author} quote={quote}/> */}
+
+
                                     <Card>
                                         <CardContent>
                                             <Typography color="text.secondary">
@@ -56,19 +44,8 @@ export default class QuotesList extends React.Component {
         )
     }
 
-    // async componentDidMount(){
-    //     //axios.get("http://localhost:3000/quotes?_expand=author")
-    //     //.then(response => this.setState({"quotes" : response.data}));
-    //     const quotes = await api.getQuotes();
-    //     setState({quotes:quotes});
-    // }
-
     async componentDidMount(){
-        //axios.get("http://localhost:3000/quotes?_expand=author")
-        //.then(response => this.setState({"quotes" : response.data}));
         const quotes = await api.getQuotes();
         this.setState({quotes: quotes});
     }
-    
-
 }

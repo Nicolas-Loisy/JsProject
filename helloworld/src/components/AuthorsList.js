@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Box, Container } from "@mui/system";
 
 import {api} from "../lib/Api";
+import { Link } from "@mui/material";
 
 
 export default class AuthorsList extends React.Component {
@@ -18,6 +19,7 @@ export default class AuthorsList extends React.Component {
                             <dr>
                                 <td>{v.id}</td> 
                                 <td>{v.name}</td>
+                                <td><Link to="/authors/{v.id}" >Auteur</Link></td>
                                 <br/>
                             </dr>
                         );
