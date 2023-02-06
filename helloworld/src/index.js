@@ -8,11 +8,14 @@ import QuotesList from './components/QuotesList';
 import AuthorsList from './components/AuthorsList';
 import { Container } from '@mui/system';
 import { Link } from '@mui/material';
+import Author from './components/Author';
 
 const router = createBrowserRouter([
   {path:"/", element:<App/>},
   {path:"/quotes", element:<QuotesList/>},
-  {path:"/authors", element:<AuthorsList/>}
+  {path:"/authors", element:<AuthorsList/>},
+  {path:"/authors/:id", element:<Author/>}
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

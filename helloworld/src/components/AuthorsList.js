@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
-
-import Button from "@mui/material/Button";
-import { Card, CardContent, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
+
+import {api} from "../lib/Api";
 
 
 export default class AuthorsList extends React.Component {
@@ -29,9 +27,8 @@ export default class AuthorsList extends React.Component {
         )
     }
 
-    componentDidMount(){
-        axios.get('http://localhost:3000/authors?_embed=quotes')
-        .then(response => this.setState({"authors" : response.data}));
+    async componentDidMount(){
+        const authors = await api.getAuthors();
+        this.setState({authors: authors});
     }
-
 }

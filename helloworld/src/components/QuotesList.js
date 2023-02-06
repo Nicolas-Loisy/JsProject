@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 
+import {api} from "../lib/Api";
 
 export default class QuotesList extends React.Component {
     state = {
@@ -55,9 +56,19 @@ export default class QuotesList extends React.Component {
         )
     }
 
-    componentDidMount(){
-        axios.get('http://localhost:3000/quotes?_expand=author')
-        .then(response => this.setState({"quotes" : response.data}));
+    // async componentDidMount(){
+    //     //axios.get("http://localhost:3000/quotes?_expand=author")
+    //     //.then(response => this.setState({"quotes" : response.data}));
+    //     const quotes = await api.getQuotes();
+    //     setState({quotes:quotes});
+    // }
+
+    async componentDidMount(){
+        //axios.get("http://localhost:3000/quotes?_expand=author")
+        //.then(response => this.setState({"quotes" : response.data}));
+        const quotes = await api.getQuotes();
+        this.setState({quotes: quotes});
     }
+    
 
 }
