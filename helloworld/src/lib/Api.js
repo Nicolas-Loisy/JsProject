@@ -9,10 +9,13 @@ export default class Api {
         return (await axios.get(`${this.baseUrl}${url}`)).data
     }
     async getQuotes(){
-        return await this.get("/quotes?_expand=author");
+        return await this.get(`/quotes?_expand=author`);
     }
     async getAuthors(){
-        return await this.get("/authors?_embed=quotes");
+        return await this.get(`/authors?_embed=quotes`);
+    }
+    async getAuthor(id){
+        return await this.get(`/authors/${id}?_embed=quotes`);
     }
 
 }
