@@ -9,12 +9,14 @@ import AuthorsList from './components/AuthorsList';
 import { Container } from '@mui/system';
 import { Link } from '@mui/material';
 import Author from './components/Author';
+import QuotesNew from './components/QuotesNew';
 
 const router = createBrowserRouter([
   {path:"/", element:<App/>},
   {path:"/quotes", element:<QuotesList/>},
   {path:"/authors", element:<AuthorsList/>},
-  {path:"/authors/:id", element:<Author/>}
+  {path:"/authors/:id", element:<Author/>},
+  {path:"/quotesNew", element:<QuotesNew/>}
 
 ]);
 

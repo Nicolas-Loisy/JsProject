@@ -10,6 +10,7 @@ function App(){
   return <Container maxWidth="sm">
     <Link to="/quotes">Citations</Link><br/>
     <Link to="/authors">Auteur</Link><br/>
+    <Link to="/quotesNew">New quote</Link><br/>
   </Container>
 }
 
