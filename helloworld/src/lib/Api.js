@@ -1,4 +1,5 @@
 import axios from "axios";
+const { v4: uuidv4 } = require('uuid');
 
 export default class Api {
 
@@ -8,9 +9,21 @@ export default class Api {
     async get(url){
         return (await axios.get(`${this.baseUrl}${url}`)).data
     }
+    async post(url, body){
+        const headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+        return (await axios.post(`${this.baseUrl}${url}`, body, headers));
+    }
     async getQuotes(){
         return await this.get(`/quotes?_expand=author`);
     }
+    async insertQuote(content, authorId) {
+        // return (await axios.post(`${this.baseUrl}/quotes`, { content: content, authorId: authorId })).data;
+        return await this.post("/quotes", { id:uuidv4(), content:content, actor:"", authorId:authorId, season:"", title:"", episode:1 })
+    }
+
     async getAuthors(){
         return await this.get(`/authors?_embed=quotes`);
     }
